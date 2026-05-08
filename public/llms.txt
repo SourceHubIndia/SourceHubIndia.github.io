@@ -1,0 +1,84 @@
+# Source Hub India
+
+> Trusted legal document partner for Fortune 500 companies. 20+ years of litigation support, document management, and legal coding services.
+
+Source Hub India Pvt Ltd is a global outsourcing solutions provider headquartered in Bengaluru, India. We are the preferred coding service provider for Fortune 500 companies and have been a preferred business partner for US-based service bureaus in litigation support services for over 20 years.
+
+## Key Facts
+
+- Founded: 2004
+- Employees: 600+
+- Projects completed: 16,250+
+- Pages processed: 1 billion+
+- Documents handled: 250 million+
+- Fields coded: 2 billion+
+- Accuracy: 99.95%
+- On-time delivery: 99.99%
+
+## Services
+
+### Legal Document Services
+- Legal Coding & Document Management: Objective, subjective, and in-text coding. Logical Document Determination (LDD) / Unitization. Bates capture, redaction, stamping, and e-labeling. OCR and OCR clean-up. Hyperlinking and bookmarking. Document indexing and coding.
+- Document Review: First-pass and second-pass review. Privilege review and logging. Relevancy and responsiveness review. Regulatory compliance review.
+- Contracts Management: Contract abstraction and summarization. Repository management. Key term and clause extraction. Compliance tracking. Contract renewal management.
+- Legal Research: Case law research and analysis. Regulatory compliance research. Due diligence support. Deposition summarization. Memoranda and brief preparation support.
+- Electronic Data Discovery (EDD): EDD image quality control. Data processing and conversion. Image format conversion. Metadata extraction and validation. Load file preparation.
+- Hybrid Coding: Technology-assisted review (TAR) support. Combined automated and manual coding workflows. Predictive coding validation.
+
+### Business Process Services
+- Forms Processing: CMS 1450 (UB-04) and CMS 1500 (HCFA) form processing. Data capture and validation.
+- Insurance Processing: Claims document processing. Policy document management. Insurance form data entry.
+- EFT Processing: Electronic funds transfer document processing. Transaction reconciliation. Audit trail maintenance.
+- Accounts Payable: Invoice capture and data entry. Three-way matching. Exception handling.
+- Image & Data Conversion: Format-to-format image conversion. Document digitization. Data migration and transformation.
+
+### Specialized Services
+- Transcription: Medical, legal, and general business transcription.
+- Title Deed Processing: Title deed data extraction. Property record processing. Ownership verification support.
+- Litigation Support: Trial exhibit preparation. Deposition summarization. Memoranda and brief support. Case chronology development.
+
+## Certifications
+
+- ISO 27001:2022 (BSI Certification): International standard for information security management systems.
+- HIPAA Title II (Security Rules Compliance): US healthcare data protection requirements.
+- SSAE18 Type-2 SOC 2 (Service Organization Control): Independent audit of security, availability, processing integrity, and confidentiality controls.
+- PCI-DSS (Payment Card Industry): Data security standard for organizations handling payment card information.
+- ISAE 3402 (International Assurance Standard): International equivalent of SOC reports for global clients.
+
+## Industries Served
+
+- Oil & Energy: Regulatory compliance, environmental litigation, joint operating agreements, safety and incident reports.
+- Financial Services: Contracts management, regulatory filings, compliance documentation, financial litigation.
+- Healthcare: Medical records coding, insurance claims processing (CMS 1450/1500), HIPAA-compliant document management.
+- Telecom: Regulatory filing documentation, service agreement management, billing documentation.
+- Automobile: Warranty documentation, regulatory compliance, product liability litigation, supply chain documentation.
+- Airline: Regulatory compliance, safety records, operational procedures, maintenance records.
+
+## Office Locations
+
+### Bengaluru (Head Office)
+Source Hub India Pvt Ltd, #29 Shree Krishna, 3rd Floor, Opp: Raheja Park, Magadi Main Road, Govindraj Nagar, Bengaluru 560 040, India.
+
+### Udupi
+Source Hub India Pvt Ltd, Sri Laxmi Narasimha Tower, 1st & 2nd Floor, above Bookmark, Kunjibettu, Udupi 576 102, India.
+
+### Mysuru
+Source Hub India Pvt Ltd, #11, 2nd Floor, above Royal Enfield Showroom, Udayaravi Road, 1st Stage Kuvempunagar, Mysuru 570 023, India.
+
+## Contact
+
+- General: info@sourcehubindia.com
+- Projects: projects@sourcehubindia.com
+- India: +91-80-4113 8190 / 8191
+- US: +1 713-518-1477 / +1 713-518-1774
+- Web: https://sourcehubindia.com
+
+## Leadership
+
+- R S Shanbhag, Founder & Director
+- V C Kamath, Chairman
+- Sampath Kumar H R, Director
+- Anil Shanbhag, Head — Finance & Facilities
+- Suresh N, General Manager
+- Rajesh V, Assistant General Manager
+- Shakila S, Senior Project Manager

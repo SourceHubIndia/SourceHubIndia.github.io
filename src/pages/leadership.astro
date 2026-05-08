@@ -46,12 +46,30 @@ const team = [
     featured: false,
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Leadership — Source Hub India",
+  "url": "https://sourcehubindia.com/leadership/",
+  "description": "Meet the leadership team of Source Hub India, a 20+ year legal document management company serving Fortune 500 clients.",
+  "mainEntity": {
+    "@type": "Organization",
+    "@id": "https://sourcehubindia.com/#organization",
+    "member": team.map(member => ({
+      "@type": "Person",
+      "name": member.name,
+      "jobTitle": member.title,
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="Leadership"
   description="Meet the leadership team of Source Hub India, a 20+ year legal document management company serving Fortune 500 clients."
   canonicalPath="/leadership/"
+  schema={schema}
 >
   <section class="page-header">
     <div class="container">

@@ -76,12 +76,22 @@ const industries = [
     certifications: ['ISO 27001', 'SSAE18 SOC 2'],
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Industries We Serve — Source Hub India",
+  "url": "https://sourcehubindia.com/industries/",
+  "description": "Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, and Airline industries.",
+  "mainEntity": { "@id": "https://sourcehubindia.com/#organization" },
+};
 ---
 
 <BaseLayout
   title="Industries"
   description="Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, and Airline industries."
   canonicalPath="/industries/"
+  schema={schema}
 >
   <section class="page-header">
     <div class="container">

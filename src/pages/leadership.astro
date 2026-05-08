@@ -6,36 +6,43 @@ const team = [
   {
     name: 'R S Shanbhag',
     title: 'Founder & Director',
+    photo: '/images/team/rs-shanbhag.jpg',
     featured: true,
   },
   {
     name: 'V C Kamath',
     title: 'Chairman',
+    photo: '/images/team/vc-kamath.jpg',
     featured: true,
   },
   {
     name: 'Sampath Kumar H R',
     title: 'Director',
+    photo: '/images/team/sampath-kumar.jpg',
     featured: false,
   },
   {
     name: 'Anil Shanbhag',
     title: 'Head — Finance & Facilities',
+    photo: '/images/team/anil-shanbhag.jpg',
     featured: false,
   },
   {
     name: 'Suresh N',
     title: 'General Manager',
+    photo: '/images/team/suresh-n.jpg',
     featured: false,
   },
   {
     name: 'Rajesh V',
     title: 'Assistant General Manager',
+    photo: '/images/team/rajesh-v.jpg',
     featured: false,
   },
   {
     name: 'Shakila S',
     title: 'Senior Project Manager',
+    photo: '/images/team/shakila-s.jpg',
     featured: false,
   },
 ];
@@ -61,9 +68,7 @@ const team = [
       <div class="team-grid">
         {team.map(member => (
           <div class:list={['team-card', { 'team-card--featured': member.featured }]}>
-            <div class="team-card__initials">
-              {member.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-            </div>
+            <img src={member.photo} alt={member.name} class="team-card__photo" width="152" height="200" loading="lazy" />
             <h2 class="team-card__name">{member.name}</h2>
             <p class="team-card__title">{member.title}</p>
           </div>
@@ -113,23 +118,14 @@ const team = [
     border-width: 2px;
   }
 
-  .team-card__initials {
-    width: 64px;
-    height: 64px;
+  .team-card__photo {
+    width: 120px;
+    height: 120px;
     margin: 0 auto var(--space-4);
-    background-color: var(--color-bg-dark);
-    color: var(--color-text-inverse);
-    font-family: var(--font-heading);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
-  }
-
-  .team-card--featured .team-card__initials {
-    background-color: var(--color-primary);
+    object-fit: cover;
+    object-position: top;
+    background-color: var(--color-bg-alt);
   }
 
   .team-card__name {

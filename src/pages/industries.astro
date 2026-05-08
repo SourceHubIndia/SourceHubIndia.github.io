@@ -4,6 +4,7 @@ import CTABanner from '../components/CTABanner.astro';
 
 const industries = [
   {
+    id: 'oil-energy',
     name: 'Oil & Energy',
     description: 'Supporting the oil and energy sector with document management for regulatory compliance, environmental litigation, and contractual obligations across complex multi-party operations.',
     projects: [
@@ -15,6 +16,7 @@ const industries = [
     certifications: ['ISO 27001', 'SSAE18 SOC 2'],
   },
   {
+    id: 'financial-services',
     name: 'Financial Services',
     description: 'Serving financial institutions with contracts management, regulatory filings, and compliance documentation. Our SOC 2 and PCI-DSS certifications ensure secure handling of sensitive financial data.',
     projects: [
@@ -26,6 +28,7 @@ const industries = [
     certifications: ['SSAE18 SOC 2', 'PCI-DSS', 'ISAE 3402'],
   },
   {
+    id: 'healthcare',
     name: 'Healthcare',
     description: 'HIPAA-compliant document processing for healthcare organizations. From medical records coding to insurance claims processing, we handle protected health information with the highest security standards.',
     projects: [
@@ -37,6 +40,7 @@ const industries = [
     certifications: ['HIPAA', 'ISO 27001', 'SSAE18 SOC 2'],
   },
   {
+    id: 'telecom',
     name: 'Telecom',
     description: 'Supporting telecommunications companies with high-volume document processing for regulatory filings, contracts, and customer documentation across complex multi-state operations.',
     projects: [
@@ -48,6 +52,7 @@ const industries = [
     certifications: ['ISO 27001', 'SSAE18 SOC 2'],
   },
   {
+    id: 'automobile',
     name: 'Automobile',
     description: 'Document management services for the automotive industry covering warranty documentation, regulatory compliance, product liability support, and manufacturing records processing.',
     projects: [
@@ -59,6 +64,7 @@ const industries = [
     certifications: ['ISO 27001', 'SSAE18 SOC 2'],
   },
   {
+    id: 'airline',
     name: 'Airline',
     description: 'Supporting airline and aviation companies with regulatory documentation, safety compliance records, and operational document management under strict industry standards.',
     projects: [
@@ -91,7 +97,7 @@ const industries = [
     <div class="container">
       <div class="industries-list">
         {industries.map((industry, index) => (
-          <div class:list={['industry-item', { 'industry-item--alt': index % 2 === 1 }]}>
+          <div id={industry.id} class:list={['industry-item', { 'industry-item--alt': index % 2 === 1 }]}>
             <div class="industry-item__content">
               <h2 class="industry-item__title">{industry.name}</h2>
               <p class="industry-item__desc">{industry.description}</p>
@@ -152,6 +158,7 @@ const industries = [
     padding: var(--space-8);
     border: 1px solid var(--color-border);
     background-color: var(--color-bg);
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
   }
 
   .industry-item__title {

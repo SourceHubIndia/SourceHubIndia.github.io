@@ -12,7 +12,7 @@ const offices = [
       'Govindraj Nagar',
       'Bangalore — 560 040',
     ],
-    mapQuery: 'Source+Hub+India+Magadi+Main+Road+Bangalore',
+    mapLink: 'https://maps.app.goo.gl/zC18THcB3zJXDP3d6',
   },
   {
     name: 'Udupi',
@@ -24,7 +24,7 @@ const offices = [
       'Kunjibettu',
       'Udupi — 576 102',
     ],
-    mapQuery: 'Kunjibettu+Udupi+Karnataka',
+    mapLink: 'https://maps.app.goo.gl/rUHQeZM3QC8iRV298',
   },
   {
     name: 'Mysuru',
@@ -36,7 +36,7 @@ const offices = [
       'Udayaravi Road, 1st Stage Kuvempunagar',
       'Mysuru — 570 023',
     ],
-    mapQuery: 'Kuvempunagar+Mysore+Karnataka',
+    mapLink: 'https://maps.app.goo.gl/2u9hzy5dXsz8HAWx6',
   },
 ];
 ---
@@ -126,7 +126,7 @@ const offices = [
               ))}
             </address>
             <a
-              href={`https://maps.google.com/?q=${office.mapQuery}`}
+              href={office.mapLink}
               target="_blank"
               rel="noopener noreferrer"
               class="office-card__map-link"

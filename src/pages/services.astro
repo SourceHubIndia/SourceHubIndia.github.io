@@ -259,7 +259,7 @@ const jumpLinks = serviceCategories.map(cat => ({
 <style>
   .page-header {
     background-color: var(--color-bg-dark);
-    padding: var(--space-16) 0;
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
   }
 
   .page-header__title {
@@ -281,11 +281,16 @@ const jumpLinks = serviceCategories.map(cat => ({
     position: sticky;
     top: var(--header-height);
     z-index: 50;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .jump-nav__list {
     display: flex;
     gap: var(--space-6);
+    /* allow horizontal scroll on small screens rather than wrapping to column */
+    white-space: nowrap;
+    min-width: min-content;
   }
 
   .jump-nav__link {
@@ -376,12 +381,7 @@ const jumpLinks = serviceCategories.map(cat => ({
     background-color: var(--color-warm);
   }
 
-  @media (max-width: 768px) {
-    .jump-nav__list {
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
+  @media (max-width: 640px) {
     .service-item {
       grid-template-columns: 1fr;
       gap: var(--space-4);

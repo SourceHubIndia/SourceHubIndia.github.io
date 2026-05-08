@@ -143,7 +143,7 @@ const offices = [
 <style>
   .page-header {
     background-color: var(--color-bg-dark);
-    padding: var(--space-16) 0;
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
   }
 
   .page-header__title {
@@ -247,7 +247,7 @@ const offices = [
     color: var(--color-warm-hover);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .contact-grid {
       grid-template-columns: 1fr;
       gap: var(--space-8);

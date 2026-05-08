@@ -99,6 +99,10 @@ const currentYear = new Date().getFullYear();
     margin-bottom: var(--space-12);
   }
 
+  .footer__grid > * {
+    min-width: 0;
+  }
+
   .footer__logo {
     margin-bottom: var(--space-4);
   }
@@ -195,10 +199,9 @@ const currentYear = new Date().getFullYear();
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .footer__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-8);
     }
   }
 </style>

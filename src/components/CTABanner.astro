@@ -70,14 +70,21 @@ const {
     color: var(--color-text-inverse);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .cta-banner__inner {
       flex-direction: column;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .cta-banner__action {
-      align-items: center;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .cta-banner__action .btn {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>

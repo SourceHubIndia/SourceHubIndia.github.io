@@ -53,14 +53,10 @@ const { stats } = Astro.props;
     color: #78909C;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .stat-bar__grid {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-6);
-    }
-
-    .stat-bar__value {
-      font-size: var(--text-3xl);
     }
   }
 </style>

@@ -79,11 +79,17 @@ const industries = [
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Industries We Serve — Source Hub India",
-  "url": "https://sourcehubindia.com/industries/",
+  "@type": "Service",
+  "name": "Industry-Specific Document Management Services",
   "description": "Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, and Airline industries.",
-  "mainEntity": { "@id": "https://sourcehubindia.com/#organization" },
+  "url": "https://sourcehubindia.com/industries/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Source Hub India Pvt Ltd",
+    "url": "https://sourcehubindia.com",
+  },
+  "areaServed": ["US", "IN", "GB"],
+  "serviceType": industries.map(i => `${i.name} Document Management`),
 };
 ---
 

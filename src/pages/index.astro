@@ -60,12 +60,101 @@ const industries = [
   { name: 'Automobile', id: 'automobile', icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 01-2-2V9l3-4h12l3 4v6a2 2 0 01-2 2M7 17a2 2 0 100 4 2 2 0 000-4zM17 17a2 2 0 100 4 2 2 0 000-4z"/></svg>' },
   { name: 'Airline', id: 'airline', icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>' },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://sourcehubindia.com/#organization",
+      "name": "Source Hub India Pvt Ltd",
+      "alternateName": "Source Hub",
+      "url": "https://sourcehubindia.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sourcehubindia.com/images/og-image.png",
+        "width": 1200,
+        "height": 630,
+      },
+      "image": "https://sourcehubindia.com/images/og-image.png",
+      "description": "Legal document management, litigation support, and legal coding services for Fortune 500 companies. ISO 27001, HIPAA, SOC 2, PCI-DSS, ISAE 3402 certified.",
+      "foundingDate": "2004",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 600 },
+      "knowsAbout": [
+        "Legal Document Management",
+        "Legal Coding",
+        "Document Review",
+        "Contracts Management",
+        "Legal Research",
+        "Electronic Data Discovery",
+        "Litigation Support",
+        "Transcription Services",
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "ISO 27001:2022" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "HIPAA Title II" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "SSAE18 Type-2 SOC 2" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "PCI-DSS" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "ISAE 3402" },
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "#29, Shree Krishna, 3rd Floor, Magadi Main Road, Govindraj Nagar",
+          "addressLocality": "Bangalore",
+          "addressRegion": "Karnataka",
+          "postalCode": "560040",
+          "addressCountry": "IN",
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Sri Laxmi Narasimha Tower, 1st & 2nd Floor, Kunjibettu",
+          "addressLocality": "Udupi",
+          "addressRegion": "Karnataka",
+          "postalCode": "576102",
+          "addressCountry": "IN",
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "#11, 2nd Floor, Udayaravi Road, 1st Stage Kuvempunagar",
+          "addressLocality": "Mysuru",
+          "addressRegion": "Karnataka",
+          "postalCode": "570023",
+          "addressCountry": "IN",
+        },
+      ],
+      "contactPoint": [
+        { "@type": "ContactPoint", "telephone": "+91-80-4113-8190", "contactType": "customer service", "areaServed": "IN", "availableLanguage": "English" },
+        { "@type": "ContactPoint", "telephone": "+1-713-518-1477", "contactType": "customer service", "areaServed": "US", "availableLanguage": "English" },
+      ],
+      "email": "info@sourcehubindia.com",
+      "areaServed": ["US", "IN", "GB"],
+      "serviceType": [
+        "Legal Document Management",
+        "Document Review",
+        "Contracts Management",
+        "Legal Research",
+        "Electronic Data Discovery",
+        "Transcription",
+        "Litigation Support",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sourcehubindia.com/#website",
+      "url": "https://sourcehubindia.com",
+      "name": "Source Hub India",
+      "publisher": { "@id": "https://sourcehubindia.com/#organization" },
+    },
+  ],
+};
 ---
 
 <BaseLayout
   title="Trusted Legal Document Partner for Fortune 500 Companies"
   description="Source Hub India — 20+ years of legal coding, document management, and litigation support for Fortune 500 companies. ISO 27001, HIPAA, SOC 2 certified."
   canonicalPath="/"
+  schema={schema}
 >
   <!-- Hero -->
   <section class="hero">
@@ -180,27 +269,7 @@ const industries = [
     description="Get in touch to learn how Source Hub can support your document management needs."
   />
 
-  <!-- Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Source Hub India Pvt Ltd",
-    "url": "https://sourcehubindia.com",
-    "logo": "https://sourcehubindia.com/favicon.svg",
-    "description": "Legal document management and litigation support services",
-    "numberOfEmployees": { "@type": "QuantitativeValue", "value": 600 },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "#29, Shree Krishna, 3rd Floor, Magadi Main Road, Govindraj Nagar",
-      "addressLocality": "Bangalore",
-      "postalCode": "560040",
-      "addressCountry": "IN"
-    },
-    "contactPoint": [
-      { "@type": "ContactPoint", "telephone": "+91-80-4113-8190", "contactType": "general" },
-      { "@type": "ContactPoint", "telephone": "+1-713-518-1477", "contactType": "general" }
-    ]
-  })} />
+
 </BaseLayout>
 
 <style>

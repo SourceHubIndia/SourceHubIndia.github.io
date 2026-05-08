@@ -8,9 +8,10 @@ interface Props {
   title: string;
   description: string;
   canonicalPath?: string;
+  schema?: object;
 }
 
-const { title, description, canonicalPath } = Astro.props;
+const { title, description, canonicalPath, schema } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title, description, canonicalPath } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
-    <SEOHead title={title} description={description} canonicalPath={canonicalPath} />
+    <SEOHead title={title} description={description} canonicalPath={canonicalPath} schema={schema} />
   </head>
   <body>
     <Header />

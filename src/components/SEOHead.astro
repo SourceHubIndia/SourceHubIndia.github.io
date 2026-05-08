@@ -3,19 +3,23 @@ interface Props {
   title: string;
   description: string;
   canonicalPath?: string;
+  schema?: object;
 }
 
-const { title, description, canonicalPath = '' } = Astro.props;
+const { title, description, canonicalPath = '', schema } = Astro.props;
 const siteUrl = 'https://sourcehubindia.com';
 const canonical = `${siteUrl}${canonicalPath}`;
 const fullTitle = canonicalPath === '/' || canonicalPath === ''
   ? `Source Hub — ${title}`
   : `${title} | Source Hub`;
+const ogImage = `${siteUrl}/images/og-image.png`;
 ---
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Source Hub India Pvt Ltd" />
 
 <!-- Open Graph -->
 <meta property="og:title" content={fullTitle} />
@@ -23,8 +27,20 @@ const fullTitle = canonicalPath === '/' || canonicalPath === ''
 <meta property="og:url" content={canonical} />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Source Hub India" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Source Hub — Trusted Legal Document Partner for Fortune 500 Companies" />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content="Source Hub — Trusted Legal Document Partner for Fortune 500 Companies" />
+
+<!-- Schema.org structured data -->
+{schema && (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

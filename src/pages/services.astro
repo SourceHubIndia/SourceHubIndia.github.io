@@ -188,12 +188,35 @@ const jumpLinks = serviceCategories.map(cat => ({
   title: cat.title,
   count: cat.services.length,
 }));
+
+const allServices = serviceCategories.flatMap(cat => cat.services);
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "provider": { "@id": "https://sourcehubindia.com/#organization" },
+  "name": "Legal Document Management & Litigation Support Services",
+  "description": "Comprehensive legal process and business process services delivered with 99.95% accuracy and 99.99% on-time delivery.",
+  "url": "https://sourcehubindia.com/services/",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Source Hub Services",
+    "itemListElement": allServices.map(s => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": s.title,
+        "description": s.description,
+      },
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="Services"
   description="Legal coding, document review, contracts management, EDD, transcription, and litigation support services. 99.95% accuracy across 16,250+ projects."
   canonicalPath="/services/"
+  schema={schema}
 >
   <section class="page-header">
     <div class="container">

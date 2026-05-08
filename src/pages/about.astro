@@ -37,12 +37,21 @@ const certifications = [
     description: 'International equivalent of SOC reports, providing assurance on controls at service organizations for global clients.',
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Source Hub India",
+  "url": "https://sourcehubindia.com/about/",
+  "mainEntity": { "@id": "https://sourcehubindia.com/#organization" },
+};
 ---
 
 <BaseLayout
   title="About"
   description="About Source Hub India — ISO 27001 and HIPAA certified legal document management company. 600+ employees, 3 offices."
   canonicalPath="/about/"
+  schema={schema}
 >
   <!-- Page Header -->
   <section class="page-header">

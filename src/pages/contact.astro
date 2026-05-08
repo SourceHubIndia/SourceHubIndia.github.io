@@ -39,12 +39,21 @@ const offices = [
     mapLink: 'https://maps.app.goo.gl/2u9hzy5dXsz8HAWx6',
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Source Hub India",
+  "url": "https://sourcehubindia.com/contact/",
+  "mainEntity": { "@id": "https://sourcehubindia.com/#organization" },
+};
 ---
 
 <BaseLayout
   title="Contact"
   description="Contact Source Hub India — offices in Bangalore, Udupi, and Mysuru. US phone: +1 713-518-1477. Email: info@sourcehubindia.com."
   canonicalPath="/contact/"
+  schema={schema}
 >
   <section class="page-header">
     <div class="container">

@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const offices = [
+  {
+    name: 'Bangalore',
+    label: 'Head Office',
+    address: [
+      'Source Hub India Pvt Ltd',
+      '#29, Shree Krishna, 3rd Floor',
+      'Opp: Raheja Park, Magadi Main Road',
+      'Govindraj Nagar',
+      'Bangalore — 560 040',
+    ],
+    mapQuery: 'Source+Hub+India+Magadi+Main+Road+Bangalore',
+  },
+  {
+    name: 'Udupi',
+    label: 'Branch Office',
+    address: [
+      'Source Hub India Pvt Ltd',
+      'Sri Laxmi Narasimha Tower',
+      '1st & 2nd Floor, above Bookmark',
+      'Kunjibettu',
+      'Udupi — 576 102',
+    ],
+    mapQuery: 'Kunjibettu+Udupi+Karnataka',
+  },
+  {
+    name: 'Mysuru',
+    label: 'Branch Office',
+    address: [
+      'Source Hub India Pvt Ltd',
+      '#11, 2nd Floor',
+      'Above Royal Enfield Showroom',
+      'Udayaravi Road, 1st Stage Kuvempunagar',
+      'Mysuru — 570 023',
+    ],
+    mapQuery: 'Kuvempunagar+Mysore+Karnataka',
+  },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Source Hub India — offices in Bangalore, Udupi, and Mysuru. US phone: 713-518-1477. Email: info@sourcehubindia.com."
+  canonicalPath="/contact/"
+>
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">Contact Us</h1>
+      <p class="page-header__subtitle">
+        Get in touch to discuss your document management and legal process outsourcing needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-method">
+          <h2 class="contact-method__heading">Email</h2>
+          <div class="contact-method__items">
+            <div class="contact-method__item">
+              <span class="contact-method__label">General Inquiries</span>
+              <a href="mailto:info@sourcehubindia.com" class="contact-method__value">info@sourcehubindia.com</a>
+            </div>
+            <div class="contact-method__item">
+              <span class="contact-method__label">Project Inquiries</span>
+              <a href="mailto:projects@sourcehubindia.com" class="contact-method__value">projects@sourcehubindia.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <h2 class="contact-method__heading">Phone</h2>
+          <div class="contact-method__items">
+            <div class="contact-method__item">
+              <span class="contact-method__label">India</span>
+              <a href="tel:+918041138190" class="contact-method__value">+91-80-4113 8190 / 8191</a>
+            </div>
+            <div class="contact-method__item">
+              <span class="contact-method__label">United States</span>
+              <a href="tel:+17135181477" class="contact-method__value">713-518-1477</a>
+            </div>
+            <div class="contact-method__item">
+              <span class="contact-method__label">United States</span>
+              <a href="tel:+17135181774" class="contact-method__value">713-518-1774</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <h2 class="contact-method__heading">Web</h2>
+          <div class="contact-method__items">
+            <div class="contact-method__item">
+              <span class="contact-method__label">Website</span>
+              <span class="contact-method__value">www.sourcehubindia.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Locations -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="section-heading__title">Our Offices</h2>
+        <p class="section-heading__subtitle">
+          Three delivery centers across India, with US-timezone phone support.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        {offices.map(office => (
+          <div class="office-card card">
+            <div class="office-card__header">
+              <h3 class="office-card__name">{office.name}</h3>
+              <span class="office-card__label">{office.label}</span>
+            </div>
+            <address class="office-card__address">
+              {office.address.map(line => (
+                <span>{line}<br /></span>
+              ))}
+            </address>
+            <a
+              href={`https://maps.google.com/?q=${office.mapQuery}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="office-card__map-link"
+            >
+              View on Google Maps &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-bg-dark);
+    padding: var(--space-16) 0;
+  }
+
+  .page-header__title {
+    font-size: var(--text-4xl);
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header__subtitle {
+    font-size: var(--text-lg);
+    color: #B0BEC5;
+    max-width: 600px;
+  }
+
+  /* Contact Methods */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .contact-method__heading {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .contact-method__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .contact-method__label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-1);
+  }
+
+  .contact-method__value {
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  a.contact-method__value:hover {
+    color: var(--color-accent);
+  }
+
+  /* Office Cards */
+  .office-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .office-card__header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .office-card__name {
+    font-size: var(--text-xl);
+  }
+
+  .office-card__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+  }
+
+  .office-card__address {
+    font-size: var(--text-sm);
+    font-style: normal;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: var(--space-4);
+  }
+
+  .office-card__map-link {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-warm);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .office-card__map-link:hover {
+    color: var(--color-warm-hover);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

@@ -1,0 +1,390 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const serviceCategories = [
+  {
+    id: 'legal',
+    title: 'Legal Document Services',
+    services: [
+      {
+        id: 'legal-coding',
+        title: 'Legal Coding & Document Management',
+        description: 'Our flagship service with over 16,250 projects completed and 1 billion pages processed. We provide comprehensive document coding and management for complex litigation matters.',
+        capabilities: [
+          'Objective, subjective, and in-text coding',
+          'Logical Document Determination (LDD) / Unitization',
+          'Bates capture, redaction, stamping, and e-labeling',
+          'OCR and OCR clean-up services',
+          'Hyperlinking and bookmarking',
+          'Document indexing and coding',
+        ],
+      },
+      {
+        id: 'document-review',
+        title: 'Document Review',
+        description: 'Thorough document review services supporting litigation, regulatory compliance, and internal investigations. Our trained reviewers handle documents across all formats and complexity levels.',
+        capabilities: [
+          'First-pass and second-pass review',
+          'Privilege review and logging',
+          'Relevancy and responsiveness review',
+          'Regulatory compliance review',
+          'Quality control and validation',
+        ],
+      },
+      {
+        id: 'contracts-management',
+        title: 'Contracts Management',
+        description: 'End-to-end contract lifecycle support from abstraction through compliance tracking. We maintain contract repositories and ensure accurate data extraction for critical business decisions.',
+        capabilities: [
+          'Contract abstraction and summarization',
+          'Repository management and organization',
+          'Key term and clause extraction',
+          'Compliance tracking and monitoring',
+          'Contract renewal management',
+        ],
+      },
+      {
+        id: 'legal-research',
+        title: 'Legal Research',
+        description: 'Comprehensive legal research services supporting case preparation, regulatory analysis, and due diligence. Our researchers provide thorough analysis except consultation to customers.',
+        capabilities: [
+          'Case law research and analysis',
+          'Regulatory compliance research',
+          'Due diligence support',
+          'Deposition summarization',
+          'Memoranda and brief preparation support',
+        ],
+      },
+      {
+        id: 'edd',
+        title: 'Electronic Data Discovery (EDD)',
+        description: 'Complete EDD processing and support services for complex litigation workflows. We handle data conversion, image quality control, and processing across all common platforms.',
+        capabilities: [
+          'EDD image quality control',
+          'Data processing and conversion',
+          'Image format conversion',
+          'Metadata extraction and validation',
+          'Load file preparation',
+        ],
+      },
+      {
+        id: 'hybrid-coding',
+        title: 'Hybrid Coding',
+        description: 'Combining automated technology-assisted review with expert manual coding to optimize accuracy and efficiency. Our hybrid solutions are collocated at 365 Data Centres for performance.',
+        capabilities: [
+          'Technology-assisted review (TAR) support',
+          'Combined automated and manual coding workflows',
+          'Predictive coding validation',
+          'Quality assurance on automated results',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'business',
+    title: 'Business Process Services',
+    services: [
+      {
+        id: 'forms-processing',
+        title: 'Forms Processing',
+        description: 'High-volume forms processing for standardized document types including CMS 1450 and 1500 forms. Accurate data capture with rigorous validation processes.',
+        capabilities: [
+          'CMS 1450 (UB-04) form processing',
+          'CMS 1500 (HCFA) form processing',
+          'Data capture and validation',
+          'Exception handling and resolution',
+        ],
+      },
+      {
+        id: 'insurance-processing',
+        title: 'Insurance Processing',
+        description: 'Specialized insurance document processing services supporting claims management, policy administration, and regulatory compliance across the insurance lifecycle.',
+        capabilities: [
+          'Claims document processing',
+          'Policy document management',
+          'Insurance form data entry',
+          'Compliance documentation',
+        ],
+      },
+      {
+        id: 'eft-processing',
+        title: 'EFT Processing',
+        description: 'Electronic funds transfer document processing and reconciliation services. Accurate handling of financial transaction documentation with full audit trails.',
+        capabilities: [
+          'EFT document processing',
+          'Transaction reconciliation',
+          'Payment documentation management',
+          'Audit trail maintenance',
+        ],
+      },
+      {
+        id: 'accounts-payable',
+        title: 'Accounts Payable',
+        description: 'Accounts payable processing services including invoice capture, validation, and workflow management. Streamlined processing to reduce cycle times and errors.',
+        capabilities: [
+          'Invoice capture and data entry',
+          'Three-way matching',
+          'Exception handling',
+          'Payment processing support',
+        ],
+      },
+      {
+        id: 'image-conversion',
+        title: 'Image & Data Conversion',
+        description: 'Document and image conversion between formats with quality assurance. Supporting migration, archival, and standardization projects across large document collections.',
+        capabilities: [
+          'Format-to-format image conversion',
+          'Document digitization',
+          'Data migration and transformation',
+          'Quality control and validation',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'specialized',
+    title: 'Specialized Services',
+    services: [
+      {
+        id: 'transcription',
+        title: 'Transcription Services',
+        description: 'Professional transcription services across medical, legal, and general domains. Our transcriptionists deliver accurate, formatted documents with rapid turnaround times.',
+        capabilities: [
+          'Medical transcription',
+          'Legal transcription',
+          'General business transcription',
+          'Quality review and formatting',
+        ],
+      },
+      {
+        id: 'title-deed',
+        title: 'Title Deed Processing',
+        description: 'Specialized title deed document processing and data extraction services. Accurate handling of property records, ownership transfers, and title documentation.',
+        capabilities: [
+          'Title deed data extraction',
+          'Property record processing',
+          'Ownership verification support',
+          'Document indexing and archival',
+        ],
+      },
+      {
+        id: 'litigation-support',
+        title: 'Litigation Support',
+        description: 'Comprehensive litigation support services from trial preparation through post-trial documentation. We support legal teams with the document-intensive aspects of case management.',
+        capabilities: [
+          'Trial exhibit preparation',
+          'Deposition summarization',
+          'Memoranda and brief support',
+          'Case chronology development',
+        ],
+      },
+    ],
+  },
+];
+
+const jumpLinks = serviceCategories.map(cat => ({
+  id: cat.id,
+  title: cat.title,
+  count: cat.services.length,
+}));
+---
+
+<BaseLayout
+  title="Services"
+  description="Legal coding, document review, contracts management, EDD, transcription, and litigation support services. 99.95% accuracy across 16,250+ projects."
+  canonicalPath="/services/"
+>
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">Our Services</h1>
+      <p class="page-header__subtitle">
+        Comprehensive legal process and business process services delivered with
+        99.95% accuracy and 99.99% on-time delivery.
+      </p>
+    </div>
+  </section>
+
+  <!-- Jump Links -->
+  <nav class="jump-nav section--alt" aria-label="Service categories">
+    <div class="container">
+      <ul class="jump-nav__list">
+        {jumpLinks.map(link => (
+          <li>
+            <a href={`#${link.id}`} class="jump-nav__link">
+              {link.title}
+              <span class="jump-nav__count">{link.count}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Service Categories -->
+  {serviceCategories.map((category, catIndex) => (
+    <section id={category.id} class:list={['section', { 'section--alt': catIndex % 2 === 1 }]}>
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-heading__title">{category.title}</h2>
+        </div>
+        <div class="services-list">
+          {category.services.map(service => (
+            <div id={service.id} class="service-item">
+              <div class="service-item__content">
+                <h3 class="service-item__title">{service.title}</h3>
+                <p class="service-item__desc">{service.description}</p>
+              </div>
+              <div class="service-item__capabilities">
+                <h4 class="service-item__cap-heading">Capabilities</h4>
+                <ul class="service-item__cap-list">
+                  {service.capabilities.map(cap => (
+                    <li>{cap}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTABanner
+    heading="Need a specific service?"
+    description="Contact us to discuss your requirements. We tailor our services to your exact needs."
+  />
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-bg-dark);
+    padding: var(--space-16) 0;
+  }
+
+  .page-header__title {
+    font-size: var(--text-4xl);
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header__subtitle {
+    font-size: var(--text-lg);
+    color: #B0BEC5;
+    max-width: 600px;
+  }
+
+  /* Jump Nav */
+  .jump-nav {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: var(--header-height);
+    z-index: 50;
+  }
+
+  .jump-nav__list {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .jump-nav__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: var(--space-2) 0;
+    transition: color 0.2s;
+  }
+
+  .jump-nav__link:hover {
+    color: var(--color-primary);
+  }
+
+  .jump-nav__count {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-light);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: 0 var(--space-2);
+    min-width: 20px;
+    text-align: center;
+  }
+
+  /* Services List */
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .service-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    scroll-margin-top: calc(var(--header-height) + 60px);
+  }
+
+  .service-item__title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .service-item__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .service-item__cap-heading {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-3);
+  }
+
+  .service-item__cap-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .service-item__cap-list li {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    padding-left: var(--space-4);
+    position: relative;
+  }
+
+  .service-item__cap-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-warm);
+  }
+
+  @media (max-width: 768px) {
+    .jump-nav__list {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .service-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

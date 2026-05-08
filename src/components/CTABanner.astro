@@ -1,0 +1,83 @@
+---
+interface Props {
+  heading: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  heading,
+  description,
+  buttonText = 'Contact Us',
+  buttonHref = '/contact/',
+} = Astro.props;
+---
+
+<section class="cta-banner section--dark">
+  <div class="container cta-banner__inner">
+    <div class="cta-banner__text">
+      <h2 class="cta-banner__heading">{heading}</h2>
+      {description && <p class="cta-banner__desc">{description}</p>}
+    </div>
+    <div class="cta-banner__action">
+      <a href={buttonHref} class="btn btn--primary">{buttonText}</a>
+      <a href="mailto:projects@sourcehubindia.com" class="cta-banner__email">projects@sourcehubindia.com</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding: var(--space-12) 0;
+    background-color: var(--color-primary);
+  }
+
+  .cta-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+  }
+
+  .cta-banner__heading {
+    font-size: var(--text-2xl);
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-1);
+  }
+
+  .cta-banner__desc {
+    font-size: var(--text-sm);
+    color: #B0BEC5;
+  }
+
+  .cta-banner__action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .cta-banner__email {
+    font-size: var(--text-sm);
+    color: #B0BEC5;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .cta-banner__email:hover {
+    color: var(--color-text-inverse);
+  }
+
+  @media (max-width: 768px) {
+    .cta-banner__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-banner__action {
+      align-items: center;
+    }
+  }
+</style>

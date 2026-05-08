@@ -1,0 +1,212 @@
+---
+const navItems = [
+  { label: 'About', href: '/about/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Industries', href: '/industries/' },
+  { label: 'Leadership', href: '/leadership/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="/" class="header__logo" aria-label="Source Hub — Home">
+      <svg width="205" height="38" viewBox="0 0 205 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- S-curve — perfectly symmetric using two quadratic beziers mirrored around y=19 -->
+        <path d="M7 1 Q1 10, 7 19 Q13 28, 7 37" stroke="#D4552A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <!-- SOURCE HUB wordmark -->
+        <text x="15" y="20" font-family="Inter, sans-serif" font-size="18" font-weight="700" letter-spacing="1.2">
+          <tspan fill="#1B3A5C">SOURCE</tspan><tspan fill="#1B3A5C" dx="4"> </tspan><tspan fill="#D4552A">HUB</tspan>
+        </text>
+        <!-- Tagline -->
+        <text x="15" y="33" font-family="Inter, sans-serif" font-size="8.5" font-weight="400" fill="#9A9AAA" letter-spacing="0.3">One click convenience to outsourcing</text>
+      </svg>
+    </a>
+
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        {navItems.map(item => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['header__nav-link', { 'header__nav-link--active': currentPath.startsWith(item.href) }]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <button class="header__menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span class="header__menu-icon"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="header__mobile-menu" hidden>
+    <nav aria-label="Mobile navigation">
+      <ul class="header__mobile-list">
+        {navItems.map(item => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['header__mobile-link', { 'header__mobile-link--active': currentPath.startsWith(item.href) }]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    height: var(--header-height);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .header__nav-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding: var(--space-2) 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .header__nav-link--active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-warm);
+  }
+
+  /* Hamburger */
+  .header__menu-btn {
+    display: none;
+    width: 32px;
+    height: 32px;
+    position: relative;
+  }
+
+  .header__menu-icon,
+  .header__menu-icon::before,
+  .header__menu-icon::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-text);
+    position: absolute;
+    left: 5px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .header__menu-icon {
+    top: 15px;
+  }
+
+  .header__menu-icon::before {
+    content: '';
+    top: -7px;
+  }
+
+  .header__menu-icon::after {
+    content: '';
+    top: 7px;
+  }
+
+  .header__menu-btn[aria-expanded="true"] .header__menu-icon {
+    background-color: transparent;
+  }
+
+  .header__menu-btn[aria-expanded="true"] .header__menu-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .header__menu-btn[aria-expanded="true"] .header__menu-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .header__mobile-menu {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4) 0;
+  }
+
+  .header__mobile-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__mobile-link {
+    display: block;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .header__mobile-link:hover,
+  .header__mobile-link--active {
+    color: var(--color-primary);
+    background-color: var(--color-bg-alt);
+  }
+
+  @media (max-width: 768px) {
+    .header__nav {
+      display: none;
+    }
+
+    .header__menu-btn {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const menuBtn = document.querySelector('.header__menu-btn');
+  const mobileMenu = document.querySelector('.header__mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    if (mobileMenu) {
+      mobileMenu.hidden = isOpen;
+    }
+  });
+</script>

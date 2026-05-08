@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+  href?: string;
+}
+
+const { title, description, icon, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class="service-card card" href={href}>
+  {icon && <div class="service-card__icon" set:html={icon} />}
+  <h3 class="service-card__title">{title}</h3>
+  <p class="service-card__desc">{description}</p>
+  {href && <span class="service-card__link">Learn more &rarr;</span>}
+</Tag>
+
+<style>
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .service-card__icon {
+    width: 40px;
+    height: 40px;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .service-card__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .service-card__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-2);
+  }
+
+  .service-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .service-card__link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-warm);
+    transition: color 0.2s;
+  }
+
+  .service-card:hover .service-card__link {
+    color: var(--color-warm-hover);
+  }
+</style>

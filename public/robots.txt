@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sourcehubindia.com/sitemap-index.xml

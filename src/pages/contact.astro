@@ -40,12 +40,13 @@ const offices = [
   },
 ];
 
+const SITE = Astro.site!.origin;
 const schema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contact Source Hub India",
-  "url": "https://sourcehubindia.com/contact/",
-  "mainEntity": { "@id": "https://sourcehubindia.com/#organization" },
+  "url": `${SITE}/contact/`,
+  "mainEntity": { "@id": `${SITE}/#organization` },
 };
 ---
 
@@ -54,6 +55,7 @@ const schema = {
   description="Contact Source Hub India — offices in Bengaluru, Udupi, and Mysuru. US phone: +1 713-518-1477. Email: info@sourcehubindia.com."
   canonicalPath="/contact/"
   schema={schema}
+  ogImage="contact"
 >
   <section class="page-header">
     <div class="container">

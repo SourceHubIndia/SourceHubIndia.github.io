@@ -89,16 +89,17 @@ const industries = [
   },
 ];
 
+const SITE = Astro.site!.origin;
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Industry-Specific Document Management Services",
-  "description": "Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, and Airline industries.",
-  "url": "https://sourcehubindia.com/industries/",
+  "description": "Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, Airline, and Professional Sports industries.",
+  "url": `${SITE}/industries/`,
   "provider": {
     "@type": "Organization",
     "name": "Source Hub India Pvt Ltd",
-    "url": "https://sourcehubindia.com",
+    "url": SITE,
   },
   "areaServed": ["US", "IN", "GB"],
   "serviceType": industries.map(i => `${i.name} Document Management`),
@@ -107,9 +108,10 @@ const schema = {
 
 <BaseLayout
   title="Industries"
-  description="Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, and Airline industries."
+  description="Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, Airline, and Professional Sports industries."
   canonicalPath="/industries/"
   schema={schema}
+  ogImage="industries"
 >
   <section class="page-header">
     <div class="container">
@@ -151,7 +153,7 @@ const schema = {
 
   <CTABanner
     heading="Discuss your industry-specific requirements"
-    description="Our team has deep domain expertise across all six verticals. Let's talk about your needs."
+    description="Our team has deep domain expertise across all seven verticals. Let's talk about your needs."
   />
 </BaseLayout>
 

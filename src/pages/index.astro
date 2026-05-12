@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTABanner from '../components/CTABanner.astro';
 
+const SITE = Astro.site!.origin;
+
 const stats = [
   { value: '16,250+', label: 'Legal Projects' },
   { value: '1B+', label: 'Pages Processed' },
@@ -66,17 +68,17 @@ const schema = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://sourcehubindia.com/#organization",
+      "@id": `${SITE}/#organization`,
       "name": "Source Hub India Pvt Ltd",
       "alternateName": "Source Hub",
-      "url": "https://sourcehubindia.com",
+      "url": SITE,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://sourcehubindia.com/images/og-image.png",
+        "url": `${SITE}/images/og/default.png`,
         "width": 1200,
         "height": 630,
       },
-      "image": "https://sourcehubindia.com/images/og-image.png",
+      "image": `${SITE}/images/og/default.png`,
       "description": "Legal document management, litigation support, and legal coding services for Fortune 500 companies. ISO 27001, HIPAA, SOC 2, PCI-DSS, ISAE 3402 certified.",
       "foundingDate": "2004",
       "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 600 },
@@ -132,10 +134,10 @@ const schema = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://sourcehubindia.com/#website",
-      "url": "https://sourcehubindia.com",
+      "@id": `${SITE}/#website`,
+      "url": SITE,
       "name": "Source Hub India",
-      "publisher": { "@id": "https://sourcehubindia.com/#organization" },
+      "publisher": { "@id": `${SITE}/#organization` },
     },
   ],
 };

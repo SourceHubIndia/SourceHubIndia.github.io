@@ -45,6 +45,17 @@ const currentPath = Astro.url.pathname;
     </button>
   </div>
 
+  <!-- Without JS the hamburger can't toggle, so show the mobile menu inline
+       and hide the now-useless button. -->
+  <noscript>
+    <style>
+      @media (max-width: 768px) {
+        .header__mobile-menu[hidden] { display: block !important; }
+        .header__menu-btn { display: none !important; }
+      }
+    </style>
+  </noscript>
+
   <!-- Mobile menu -->
   <div class="header__mobile-menu" hidden>
     <nav aria-label="Mobile navigation">

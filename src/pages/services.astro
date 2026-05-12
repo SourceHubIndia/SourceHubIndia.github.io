@@ -190,13 +190,14 @@ const jumpLinks = serviceCategories.map(cat => ({
 }));
 
 const allServices = serviceCategories.flatMap(cat => cat.services);
+const SITE = Astro.site!.origin;
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "provider": { "@id": "https://sourcehubindia.com/#organization" },
+  "provider": { "@id": `${SITE}/#organization` },
   "name": "Legal Document Management & Litigation Support Services",
   "description": "Comprehensive legal process and business process services delivered with 99.95% accuracy and 99.99% on-time delivery.",
-  "url": "https://sourcehubindia.com/services/",
+  "url": `${SITE}/services/`,
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Source Hub Services",
@@ -217,6 +218,7 @@ const schema = {
   description="Legal coding, document review, contracts management, EDD, transcription, and litigation support services. 99.95% accuracy across 16,250+ projects."
   canonicalPath="/services/"
   schema={schema}
+  ogImage="services"
 >
   <section class="page-header">
     <div class="container">

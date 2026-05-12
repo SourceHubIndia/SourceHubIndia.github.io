@@ -9,9 +9,11 @@ interface Props {
   description: string;
   canonicalPath?: string;
   schema?: object;
+  /** Slug of a PNG in /images/og/ (without extension). Defaults to "default". */
+  ogImage?: string;
 }
 
-const { title, description, canonicalPath, schema } = Astro.props;
+const { title, description, canonicalPath, schema, ogImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +24,7 @@ const { title, description, canonicalPath, schema } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
-    <SEOHead title={title} description={description} canonicalPath={canonicalPath} schema={schema} />
+    <SEOHead title={title} description={description} canonicalPath={canonicalPath} schema={schema} ogImage={ogImage} />
   </head>
   <body>
     <Header />

@@ -54,7 +54,7 @@ function renderSvg({ primary }) {
   <rect width="1200" height="630" fill="#FFFFFF"/>
   <rect x="0" y="0" width="1200" height="6" fill="${ORANGE}"/>
 
-  <g transform="translate(110, 140)">
+  <g transform="translate(110, 90)">
     <path d="M30 0 Q-6 56, 30 112 Q66 168, 30 224"
           stroke="${ORANGE}" stroke-width="13" fill="none" stroke-linecap="round"/>
     <text x="78" y="160" class="wordmark">
@@ -62,10 +62,10 @@ function renderSvg({ primary }) {
     </text>
   </g>
 
-  <text x="188" y="350" class="tagline-primary">${escapeXml(primary)}</text>
-  <text x="188" y="396" class="tagline-secondary">${escapeXml(SECONDARY)}</text>
-  <text x="188" y="458" class="certs">ISO 27001 · HIPAA · SOC 2 · PCI-DSS · ISAE 3402</text>
-  <text x="188" y="512" class="url">sourcehubindia.com</text>
+  <text x="188" y="300" class="tagline-primary">${escapeXml(primary)}</text>
+  <text x="188" y="346" class="tagline-secondary">${escapeXml(SECONDARY)}</text>
+  <text x="188" y="408" class="certs">ISO 27001 · HIPAA · SOC 2 · PCI-DSS · ISAE 3402</text>
+  <text x="188" y="462" class="url">sourcehubindia.com</text>
 </svg>`;
 }
 

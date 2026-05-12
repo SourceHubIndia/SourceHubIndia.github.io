@@ -24,7 +24,6 @@ const offices = [
       'Kunjibettu',
       'Udupi — 576 102',
     ],
-    mapLink: 'https://maps.app.goo.gl/rUHQeZM3QC8iRV298',
   },
   {
     name: 'Mysuru',
@@ -36,7 +35,6 @@ const offices = [
       'Udayaravi Road, 1st Stage Kuvempunagar',
       'Mysuru — 570 023',
     ],
-    mapLink: 'https://maps.app.goo.gl/2u9hzy5dXsz8HAWx6',
   },
 ];
 
@@ -134,14 +132,16 @@ const schema = {
                 <span>{line}<br /></span>
               ))}
             </address>
-            <a
-              href={office.mapLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="office-card__map-link"
-            >
-              View on Google Maps &rarr;
-            </a>
+            {office.mapLink && (
+              <a
+                href={office.mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="office-card__map-link"
+              >
+                View on Google Maps &rarr;
+              </a>
+            )}
           </div>
         ))}
       </div>

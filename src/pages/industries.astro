@@ -28,6 +28,18 @@ const industries = [
     certifications: ['SSAE18 SOC 2', 'PCI-DSS', 'ISAE 3402'],
   },
   {
+    id: 'insurance',
+    name: 'Insurance',
+    description: 'Document services for P&C, life, health, and specialty insurance carriers. We support claims, policy administration, underwriting, and regulatory workflows — with controls calibrated to PHI, PII, and payment data across the policy lifecycle.',
+    projects: [
+      'Claims document processing and FNOL intake',
+      'Policy administration and issuance',
+      'Underwriting document support',
+      'Regulatory and compliance filings',
+    ],
+    certifications: ['ISO 27001', 'SSAE18 SOC 2', 'HIPAA', 'PCI-DSS'],
+  },
+  {
     id: 'healthcare',
     name: 'Healthcare',
     description: 'HIPAA-compliant document processing for healthcare organizations. From medical records coding to insurance claims processing, we handle protected health information with the highest security standards.',
@@ -94,7 +106,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Industry-Specific Document Management Services",
-  "description": "Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, Airline, and Professional Sports industries.",
+  "description": "Legal document management services for Oil & Energy, Financial Services, Insurance, Healthcare, Telecom, Automobile, Airline, and Professional Sports industries.",
   "url": `${SITE}/industries/`,
   "provider": {
     "@type": "Organization",
@@ -108,7 +120,7 @@ const schema = {
 
 <BaseLayout
   title="Industries"
-  description="Legal document management services for Oil & Energy, Financial Services, Healthcare, Telecom, Automobile, Airline, and Professional Sports industries."
+  description="Legal document management services for Oil & Energy, Financial Services, Insurance, Healthcare, Telecom, Automobile, Airline, and Professional Sports industries."
   canonicalPath="/industries/"
   schema={schema}
   ogImage="industries"
@@ -118,7 +130,7 @@ const schema = {
       <h1 class="page-header__title">Industries We Serve</h1>
       <p class="page-header__subtitle">
         Preferred litigation support and document management partner for Fortune 500 companies
-        across seven key industry verticals.
+        across eight key industry verticals.
       </p>
     </div>
   </section>
@@ -153,7 +165,7 @@ const schema = {
 
   <CTABanner
     heading="Discuss your industry-specific requirements"
-    description="Our team has deep domain expertise across all seven verticals. Let's talk about your needs."
+    description="Our team has deep domain expertise across all eight verticals. Let's talk about your needs."
   />
 </BaseLayout>
 

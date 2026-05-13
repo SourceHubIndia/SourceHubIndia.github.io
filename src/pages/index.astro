@@ -249,6 +249,27 @@ const schema = {
     </div>
   </section>
 
+  <!-- Testimonials Carousel -->
+  <section class="section section--dark testimonials-carousel">
+    <div class="container">
+      <div class="section-heading section-heading--light">
+        <h2 class="section-heading__title">What Our Clients Say</h2>
+      </div>
+      <div class="carousel" id="testimonialCarousel">
+        <blockquote class="carousel__quote">
+          <p class="carousel__text" id="carouselText"></p>
+          <footer>
+            <cite class="carousel__cite" id="carouselCite"></cite>
+          </footer>
+        </blockquote>
+        <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Testimonial navigation"></div>
+      </div>
+      <div class="carousel__cta">
+        <a href="/testimonials/" class="btn btn--outline">Read All Testimonials</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Industries -->
   <section class="section">
     <div class="container">
@@ -523,4 +544,177 @@ const schema = {
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  /* Testimonials Carousel */
+  .testimonials-carousel {
+    text-align: center;
+  }
+
+  .section-heading--light::before {
+    background-color: var(--color-warm);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-heading--light .section-heading__title {
+    color: var(--color-text-inverse);
+  }
+
+  .carousel {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .carousel__quote {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel__quote.is-fading {
+    opacity: 0;
+  }
+
+  .carousel__text {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-text-inverse);
+    line-height: 1.65;
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .carousel__text::before {
+    content: '\201C';
+    color: var(--color-warm);
+    font-size: 3rem;
+    line-height: 0;
+    vertical-align: -0.35em;
+    margin-right: var(--space-1);
+    font-weight: 700;
+  }
+
+  .carousel__cite {
+    font-style: normal;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #78909C;
+  }
+
+  .carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-10);
+  }
+
+  .carousel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s;
+  }
+
+  .carousel__dot--active {
+    background-color: var(--color-warm);
+  }
+
+  .carousel__cta {
+    margin-top: var(--space-10);
+  }
+
+  @media (max-width: 640px) {
+    .carousel__text {
+      font-size: var(--text-lg);
+    }
+
+    .carousel__quote {
+      min-height: 200px;
+    }
+  }
 </style>
+
+<script>
+  const quotes = [
+    {
+      text: "Thank you for all of your help — your team is the best. I don't know if I've said that enough recently, but I truly appreciate everything you've done for me with my projects. My success is built on the incredible work your team does, and I make a point of telling Ricoh management that at every opportunity.",
+      role: "Senior Project Manager",
+    },
+    {
+      text: "They spent quite a bit of time talking about how much they appreciated your team's hospitality during last month's visit, as well as your business model. Thank you as always for your partnership — and for making us all better in the eyes of our shared customers.",
+      role: "Chief Sales Officer",
+    },
+    {
+      text: "Perfect record on the week. It's getting to the point where I almost want to see an error — but in all seriousness, great work. This team is the gold standard of the quality-first mentality, and I really appreciate everyone staying focused on what matters most.",
+      role: "Operations Manager",
+    },
+    {
+      text: "There's no way I could be successful in my role without your team's incredible efforts. Thank you so much.",
+      role: "Operations Manager",
+    },
+  ];
+
+  const textEl = document.getElementById('carouselText');
+  const citeEl = document.getElementById('carouselCite');
+  const dotsEl = document.getElementById('carouselDots');
+  const quoteEl = document.querySelector('.carousel__quote');
+
+  let current = 0;
+  let timer = null;
+
+  function show(idx) {
+    quoteEl.classList.add('is-fading');
+    setTimeout(() => {
+      textEl.textContent = quotes[idx].text;
+      citeEl.textContent = quotes[idx].role;
+      dotsEl.querySelectorAll('.carousel__dot').forEach((d, i) => {
+        d.classList.toggle('carousel__dot--active', i === idx);
+        d.setAttribute('aria-selected', String(i === idx));
+      });
+      quoteEl.classList.remove('is-fading');
+      current = idx;
+    }, 300);
+  }
+
+  function advance() {
+    show((current + 1) % quotes.length);
+  }
+
+  function start() {
+    timer = setInterval(advance, 6000);
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+  }
+
+  // Build dots
+  quotes.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel__dot' + (i === 0 ? ' carousel__dot--active' : '');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+    dot.setAttribute('aria-selected', String(i === 0));
+    dot.addEventListener('click', () => { stop(); show(i); start(); });
+    dotsEl.appendChild(dot);
+  });
+
+  // Seed first quote
+  textEl.textContent = quotes[0].text;
+  citeEl.textContent = quotes[0].role;
+
+  // Auto-advance, pause on hover, respect prefers-reduced-motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    quoteEl.addEventListener('mouseenter', stop);
+    quoteEl.addEventListener('mouseleave', start);
+    start();
+  }
+</script>

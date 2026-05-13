@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const SITE = Astro.site!.origin;
+
+const featured = [
+  {
+    quote: "Thank you for all of your help — your team is the best. I don't know if I've said that enough recently, but I truly appreciate everything you've done for me with my projects. My success is built on the incredible work your team does, and I make a point of telling Ricoh management that at every opportunity.",
+    role: "Senior Project Manager",
+  },
+  {
+    quote: "There was a quarterly business review with Standard last week, and they spent quite a bit of time talking about how much they appreciated your team's hospitality during last month's visit, as well as your business model. Thank you as always for your partnership — and for making us all better in the eyes of our shared customers.",
+    role: "Chief Sales Officer",
+  },
+  {
+    quote: "Hearing glowing reports from the PM for Standard on how well your team is performing — and the customer is very happy too. Not surprised, and very glad you're getting the credit you deserve. Good luck with the upcoming tour. I know you'll impress as always, and I look forward to visiting your offices sometime.",
+    role: "Project Manager",
+  },
+];
+
+const operational = [
+  {
+    quote: "You've been on a hot streak — at least five or six days in a row with no errors. Keep it up.",
+  },
+  {
+    quote: "Perfect record on the week. It's getting to the point where I almost want to see an error — but in all seriousness, great work. I really appreciate everyone on the team staying focused on quality. Especially at this time of year, quality is our main focus, and this team is the gold standard of that mentality.",
+  },
+  {
+    quote: "Just another day of perfection out of the team. I don't know what else I'd expect at this point. I can tell you're all taking your time and really focusing on quality — I really appreciate it.",
+  },
+  {
+    quote: "Thank you so much for the communication and the additional effort to get the work caught up. We appreciate you and the team so much.",
+  },
+  {
+    quote: "There's no way I could be successful in my role without your team's incredible efforts. Thank you so much.",
+  },
+  {
+    quote: "That is incredible. You guys are awesome. Thank you so much.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Client Testimonials — Source Hub India",
+  "url": `${SITE}/testimonials/`,
+  "description": "What Fortune 500 clients say about Source Hub India's legal document management and litigation support services.",
+  "mainEntity": { "@id": `${SITE}/#organization` },
+};
+---
+
+<BaseLayout
+  title="Client Testimonials"
+  description="What our clients say about Source Hub India — trusted by Fortune 500 companies for legal document management and litigation support for over 20 years."
+  canonicalPath="/testimonials/"
+  schema={schema}
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">Client Testimonials</h1>
+      <p class="page-header__subtitle">
+        Over 20 years, we have built our reputation one client relationship at a time.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="section-heading__title">Heard from Senior Leadership</h2>
+        <p class="section-heading__subtitle">
+          Words from the executives and project leaders at the organizations we partner with.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        {featured.map(t => (
+          <blockquote class="testimonial-card">
+            <div class="testimonial-card__mark" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-card__text">{t.quote}</p>
+            <footer class="testimonial-card__footer">
+              <cite class="testimonial-card__role">{t.role}</cite>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Operational Excellence Quotes -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="section-heading__title">Consistent Excellence, Every Day</h2>
+        <p class="section-heading__subtitle">
+          What our quality and operations teams hear from clients who rely on us daily.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        {operational.map(t => (
+          <blockquote class="testimonial-mini">
+            <p class="testimonial-mini__text">{t.quote}</p>
+            <footer class="testimonial-mini__footer">
+              <cite class="testimonial-mini__role">Operations Manager, Fortune 500 Client</cite>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Ready to experience the Source Hub difference?"
+    description="Join the Fortune 500 companies who trust us with their most critical document management needs."
+  />
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-bg-dark);
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
+  }
+
+  .page-header__title {
+    font-size: var(--text-4xl);
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header__subtitle {
+    font-size: var(--text-lg);
+    color: #B0BEC5;
+    max-width: 600px;
+  }
+
+  /* Featured testimonial cards */
+  .testimonial-card {
+    border: 1px solid var(--color-border);
+    padding: var(--space-8) var(--space-6) var(--space-6);
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .testimonial-card__mark {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-warm);
+    margin-bottom: var(--space-2);
+    font-weight: 700;
+  }
+
+  .testimonial-card__text {
+    font-size: var(--text-base);
+    color: var(--color-text-light);
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: var(--space-6);
+  }
+
+  .testimonial-card__footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-4);
+  }
+
+  .testimonial-card__role {
+    font-style: normal;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+
+  /* Operational mini cards */
+  .testimonial-mini {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    position: relative;
+  }
+
+  .testimonial-mini::before {
+    content: '\201C';
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--color-warm);
+    font-weight: 700;
+    display: block;
+  }
+
+  .testimonial-mini__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .testimonial-mini__footer {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .testimonial-mini__role {
+    font-style: normal;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+</style>

@@ -504,59 +504,69 @@ const schema = {
     gap: var(--space-3);
     padding: var(--space-6) var(--space-4);
     text-decoration: none;
-    /* Default navy; the per-breakpoint :nth-child rules below paint the
-       checkerboard so each row offsets the previous one. */
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
+    /* Pastel navy default. The per-breakpoint :nth-child rules below paint
+       the checkerboard with a pastel orange override. Icons & labels stay
+       in full brand color so there's contrast without the cards shouting. */
+    background-color: #EAF1F8;
     transition: background-color 0.2s;
   }
 
   .industry-badge:hover {
-    background-color: var(--color-primary-dark);
+    background-color: #D9E6F1;
   }
 
   .industry-badge__icon {
-    color: var(--color-text-inverse);
+    color: var(--color-primary);
     line-height: 1;
   }
 
   .industry-badge__name {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-text-inverse);
+    color: var(--color-primary);
     text-align: center;
   }
 
-  /* Desktop checkerboard on a 4-col grid: orange at positions 2, 4, 5, 7
-     of each 8-card group → row 1 reads N-O-N-O, row 2 reads O-N-O-N. */
+  /* Desktop checkerboard on a 4-col grid: pastel orange at positions 2, 4,
+     5, 7 of each 8-card group → row 1 reads N-O-N-O, row 2 reads O-N-O-N. */
   @media (min-width: 1025px) {
     .industry-badge:nth-child(8n+2),
     .industry-badge:nth-child(8n+4),
     .industry-badge:nth-child(8n+5),
     .industry-badge:nth-child(8n+7) {
-      background-color: var(--color-warm);
+      background-color: #FCEFE5;
     }
     .industry-badge:nth-child(8n+2):hover,
     .industry-badge:nth-child(8n+4):hover,
     .industry-badge:nth-child(8n+5):hover,
     .industry-badge:nth-child(8n+7):hover {
-      background-color: var(--color-warm-hover);
+      background-color: #F7DDC8;
+    }
+    .industry-badge:nth-child(8n+2) .industry-badge__icon,
+    .industry-badge:nth-child(8n+4) .industry-badge__icon,
+    .industry-badge:nth-child(8n+5) .industry-badge__icon,
+    .industry-badge:nth-child(8n+7) .industry-badge__icon {
+      color: var(--color-warm);
     }
   }
 
-  /* Tablet/mobile 2-col checkerboard: orange at positions 2, 3 of each
-     4-card group → N-O, O-N, N-O, O-N down the grid. */
+  /* Tablet/mobile 2-col checkerboard: pastel orange at positions 2, 3 of
+     each 4-card group → N-O, O-N, N-O, O-N down the grid. */
   @media (max-width: 1024px) {
     .industries-grid {
       grid-template-columns: repeat(2, 1fr);
     }
     .industry-badge:nth-child(4n+2),
     .industry-badge:nth-child(4n+3) {
-      background-color: var(--color-warm);
+      background-color: #FCEFE5;
     }
     .industry-badge:nth-child(4n+2):hover,
     .industry-badge:nth-child(4n+3):hover {
-      background-color: var(--color-warm-hover);
+      background-color: #F7DDC8;
+    }
+    .industry-badge:nth-child(4n+2) .industry-badge__icon,
+    .industry-badge:nth-child(4n+3) .industry-badge__icon {
+      color: var(--color-warm);
     }
   }
 

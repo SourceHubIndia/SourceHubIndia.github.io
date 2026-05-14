@@ -504,24 +504,15 @@ const schema = {
     gap: var(--space-3);
     padding: var(--space-6) var(--space-4);
     text-decoration: none;
-    /* Alternate navy/orange. Odd cards (1, 3, 5, 7) default to navy;
-       :nth-child(even) overrides to orange. White text + icons keep
-       contrast strong on both. */
+    /* Default navy; the per-breakpoint :nth-child rules below paint the
+       checkerboard so each row offsets the previous one. */
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
     transition: background-color 0.2s;
   }
 
-  .industry-badge:nth-child(even) {
-    background-color: var(--color-warm);
-  }
-
   .industry-badge:hover {
     background-color: var(--color-primary-dark);
-  }
-
-  .industry-badge:nth-child(even):hover {
-    background-color: var(--color-warm-hover);
   }
 
   .industry-badge__icon {
@@ -536,9 +527,36 @@ const schema = {
     text-align: center;
   }
 
+  /* Desktop checkerboard on a 4-col grid: orange at positions 2, 4, 5, 7
+     of each 8-card group → row 1 reads N-O-N-O, row 2 reads O-N-O-N. */
+  @media (min-width: 1025px) {
+    .industry-badge:nth-child(8n+2),
+    .industry-badge:nth-child(8n+4),
+    .industry-badge:nth-child(8n+5),
+    .industry-badge:nth-child(8n+7) {
+      background-color: var(--color-warm);
+    }
+    .industry-badge:nth-child(8n+2):hover,
+    .industry-badge:nth-child(8n+4):hover,
+    .industry-badge:nth-child(8n+5):hover,
+    .industry-badge:nth-child(8n+7):hover {
+      background-color: var(--color-warm-hover);
+    }
+  }
+
+  /* Tablet/mobile 2-col checkerboard: orange at positions 2, 3 of each
+     4-card group → N-O, O-N, N-O, O-N down the grid. */
   @media (max-width: 1024px) {
     .industries-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .industry-badge:nth-child(4n+2),
+    .industry-badge:nth-child(4n+3) {
+      background-color: var(--color-warm);
+    }
+    .industry-badge:nth-child(4n+2):hover,
+    .industry-badge:nth-child(4n+3):hover {
+      background-color: var(--color-warm-hover);
     }
   }
 

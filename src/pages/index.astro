@@ -503,25 +503,36 @@ const schema = {
     align-items: center;
     gap: var(--space-3);
     padding: var(--space-6) var(--space-4);
-    border: 1px solid var(--color-border);
     text-decoration: none;
-    transition: border-color 0.2s, background-color 0.2s;
+    /* Alternate navy/orange. Odd cards (1, 3, 5, 7) default to navy;
+       :nth-child(even) overrides to orange. White text + icons keep
+       contrast strong on both. */
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    transition: background-color 0.2s;
+  }
+
+  .industry-badge:nth-child(even) {
+    background-color: var(--color-warm);
   }
 
   .industry-badge:hover {
-    border-color: var(--color-primary);
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-primary-dark);
+  }
+
+  .industry-badge:nth-child(even):hover {
+    background-color: var(--color-warm-hover);
   }
 
   .industry-badge__icon {
-    color: var(--color-primary);
+    color: var(--color-text-inverse);
     line-height: 1;
   }
 
   .industry-badge__name {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--color-text-inverse);
     text-align: center;
   }
 
